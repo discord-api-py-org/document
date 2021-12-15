@@ -27,15 +27,40 @@
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">class Embed:
+    &#34;&#34;&#34;This can create a embed
+    
+    Parameters
+    ----------
+    title : Optional[str]
+        title of embed
+    description : Optional[str]
+        description of embed
+        
+    Attributes
+    ----------
+    title : Optional[str]
+        title of embed
+    description : Optional[str]
+        description of embed
+    &#34;&#34;&#34;
     def __init__(self, title:str = None, description:str = None):
         self.title = title
         self.description = description
         self.fields = []
 
     def add_field(self, name:str, value:str):
+        &#34;&#34;&#34;This can add field to embed
+        
+        Parameters
+        ----------
+        name : str
+            This is name for embed field.
+        value : str
+            This is value for embed field.
+        &#34;&#34;&#34;
         self.fields.appends({&#34;name&#34;: name, &#34;value&#34;: &#34;value&#34;})
 
-    def to_dict(self):
+    def to_dict(self) -&gt; dict:
         payload = {}
         if self.title is not None:
             payload[&#34;title&#34;] = self.title
@@ -60,21 +85,60 @@
 <span>(</span><span>title: str = None, description: str = None)</span>
 </code></dt>
 <dd>
-<div class="desc"></div>
+<div class="desc"><p>This can create a embed</p>
+<h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>title</code></strong> :&ensp;<code>Optional[str]</code></dt>
+<dd>title of embed</dd>
+<dt><strong><code>description</code></strong> :&ensp;<code>Optional[str]</code></dt>
+<dd>description of embed</dd>
+</dl>
+<h2 id="attributes">Attributes</h2>
+<dl>
+<dt><strong><code>title</code></strong> :&ensp;<code>Optional[str]</code></dt>
+<dd>title of embed</dd>
+<dt><strong><code>description</code></strong> :&ensp;<code>Optional[str]</code></dt>
+<dd>description of embed</dd>
+</dl></div>
 <details class="source">
 <summary>
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">class Embed:
+    &#34;&#34;&#34;This can create a embed
+    
+    Parameters
+    ----------
+    title : Optional[str]
+        title of embed
+    description : Optional[str]
+        description of embed
+        
+    Attributes
+    ----------
+    title : Optional[str]
+        title of embed
+    description : Optional[str]
+        description of embed
+    &#34;&#34;&#34;
     def __init__(self, title:str = None, description:str = None):
         self.title = title
         self.description = description
         self.fields = []
 
     def add_field(self, name:str, value:str):
+        &#34;&#34;&#34;This can add field to embed
+        
+        Parameters
+        ----------
+        name : str
+            This is name for embed field.
+        value : str
+            This is value for embed field.
+        &#34;&#34;&#34;
         self.fields.appends({&#34;name&#34;: name, &#34;value&#34;: &#34;value&#34;})
 
-    def to_dict(self):
+    def to_dict(self) -&gt; dict:
         payload = {}
         if self.title is not None:
             payload[&#34;title&#34;] = self.title
@@ -90,17 +154,33 @@
 <span>def <span class="ident">add_field</span></span>(<span>self, name: str, value: str)</span>
 </code></dt>
 <dd>
-<div class="desc"></div>
+<div class="desc"><p>This can add field to embed</p>
+<h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>name</code></strong> :&ensp;<code>str</code></dt>
+<dd>This is name for embed field.</dd>
+<dt><strong><code>value</code></strong> :&ensp;<code>str</code></dt>
+<dd>This is value for embed field.</dd>
+</dl></div>
 <details class="source">
 <summary>
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">def add_field(self, name:str, value:str):
+    &#34;&#34;&#34;This can add field to embed
+    
+    Parameters
+    ----------
+    name : str
+        This is name for embed field.
+    value : str
+        This is value for embed field.
+    &#34;&#34;&#34;
     self.fields.appends({&#34;name&#34;: name, &#34;value&#34;: &#34;value&#34;})</code></pre>
 </details>
 </dd>
 <dt id="discord_api.embed.Embed.to_dict"><code class="name flex">
-<span>def <span class="ident">to_dict</span></span>(<span>self)</span>
+<span>def <span class="ident">to_dict</span></span>(<span>self) ‑> dict</span>
 </code></dt>
 <dd>
 <div class="desc"></div>
@@ -108,7 +188,7 @@
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def to_dict(self):
+<pre><code class="python">def to_dict(self) -&gt; dict:
     payload = {}
     if self.title is not None:
         payload[&#34;title&#34;] = self.title
