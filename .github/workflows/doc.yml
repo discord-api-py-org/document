@@ -25,9 +25,8 @@ jobs:
         run: |
           bash doc.sh
 
-      - name: Commit and Push # 実行した結果をプッシュして変更をレポジトリに反映
+      - name: Commit and Push # git remote set-url origin https://github-actions:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}
         run: |
-          # git remote set-url origin https://github-actions:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}
           git checkout -b main
           git config user.name "tuna2134"
           git config user.email "masato190411@gmail.com"
