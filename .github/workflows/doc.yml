@@ -27,9 +27,9 @@ jobs:
 
       - name: Commit and Push # git remote set-url origin https://github-actions:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}
         run: |
-          git add .
-          git commit -m "add document"
           git config user.name "tuna2134"
           git config user.email "masato190411@gmail.com"
+          git add .
+          git commit -m "add document"
           git checkout -b main
           git push origin main
