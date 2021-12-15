@@ -38,16 +38,18 @@ class Client:
         &#34;&#34;&#34;
         This can setup a discordbot.
 
-        Args:
-            loop (asyncio.AbstractEventLoop)
-            log (bool)
+        Parameters
+        ----------
+        loop : asyncio.AbstractEventLoop
+            Put a event loop.
+        log : bool default True
+            If you don&#39;t want show a log, please do False
 
-        Returns:
-            Client (class)
-
-        Examples:
-            from discord_api import Client
-            client = Client()
+        Examples
+        --------
+        ```python
+        from discord_api import Client
+        client = Client()
         &#34;&#34;&#34;
         self.loop = asyncio.get_event_loop() if loop is None else loop
         self.http = DiscordRequest(self)
@@ -68,8 +70,11 @@ class Client:
         &#34;&#34;&#34;
         This is print a like sanic log
         
-        Examples:
-            client.print(&#34;test&#34;, &#34;this is test&#34;)
+        Examples
+        --------
+        ```python
+        client.print(&#34;test&#34;, &#34;this is test&#34;)
+        ```
         &#34;&#34;&#34;
         if self.log is True:
             print(f&#34;[{name}]:{content}&#34;)
@@ -101,9 +106,12 @@ class Client:
         &#34;&#34;&#34;
         This can run a discord client.
 
-        Examples:
-            client = Client()
-            client.run(&#34;ToKeN&#34;)
+        Examples
+        --------
+        ```python
+        client = Client()
+        client.run(&#34;ToKeN&#34;)
+        ```
         &#34;&#34;&#34;
         self.loop.run_until_complete(self.start(token))
 
@@ -111,14 +119,17 @@ class Client:
         &#34;&#34;&#34;
         This is send gateway event.
 
-        Examples:
-            client = Client()
+        Examples
+        --------
+        ```python
+        client = Client()
         
-            @client.event
-            async def on_ready():
-                print(&#34;ready&#34;)
+        @client.event
+        async def on_ready():
+            print(&#34;ready&#34;)
 
-            client.run(&#34;ToKeN&#34;)
+        client.run(&#34;ToKeN&#34;)
+        ```
         &#34;&#34;&#34;
         setattr(self, coro.__name__, coro)
         return coro
@@ -170,13 +181,16 @@ class Client:
         &#34;&#34;&#34;
         This can add discord application commannd.
 
-        Examples:
-            from discord_api import Client, Command
+        Examples
+        --------
+        ```python
+        from discord_api import Client, Command
 
-            client = Client()
-            client.add_command(Command(name = &#34;ping&#34;, description = &#34;pong&#34;))
+        client = Client()
+        client.add_command(Command(name = &#34;ping&#34;, description = &#34;pong&#34;))
         
-            client.run(&#34;ToKeN&#34;)
+        client.run(&#34;ToKeN&#34;)
+        ```
         &#34;&#34;&#34;
         self.commands.append(command)</code></pre>
 </details>
@@ -196,13 +210,16 @@ class Client:
 </code></dt>
 <dd>
 <div class="desc"><p>This can setup a discordbot.</p>
-<h2 id="args">Args</h2>
-<p>loop (asyncio.AbstractEventLoop)
-log (bool)</p>
-<h2 id="returns">Returns</h2>
-<p>Client (class)</p>
+<h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>loop</code></strong> :&ensp;<code>asyncio.AbstractEventLoop</code></dt>
+<dd>Put a event loop.</dd>
+<dt><strong><code>log</code></strong> :&ensp;<code>bool default True</code></dt>
+<dd>If you don't want show a log, please do False</dd>
+</dl>
 <h2 id="examples">Examples</h2>
-<p>from discord_api import Client
+<p>```python
+from discord_api import Client
 client = Client()</p></div>
 <details class="source">
 <summary>
@@ -213,16 +230,18 @@ client = Client()</p></div>
         &#34;&#34;&#34;
         This can setup a discordbot.
 
-        Args:
-            loop (asyncio.AbstractEventLoop)
-            log (bool)
+        Parameters
+        ----------
+        loop : asyncio.AbstractEventLoop
+            Put a event loop.
+        log : bool default True
+            If you don&#39;t want show a log, please do False
 
-        Returns:
-            Client (class)
-
-        Examples:
-            from discord_api import Client
-            client = Client()
+        Examples
+        --------
+        ```python
+        from discord_api import Client
+        client = Client()
         &#34;&#34;&#34;
         self.loop = asyncio.get_event_loop() if loop is None else loop
         self.http = DiscordRequest(self)
@@ -243,8 +262,11 @@ client = Client()</p></div>
         &#34;&#34;&#34;
         This is print a like sanic log
         
-        Examples:
-            client.print(&#34;test&#34;, &#34;this is test&#34;)
+        Examples
+        --------
+        ```python
+        client.print(&#34;test&#34;, &#34;this is test&#34;)
+        ```
         &#34;&#34;&#34;
         if self.log is True:
             print(f&#34;[{name}]:{content}&#34;)
@@ -276,9 +298,12 @@ client = Client()</p></div>
         &#34;&#34;&#34;
         This can run a discord client.
 
-        Examples:
-            client = Client()
-            client.run(&#34;ToKeN&#34;)
+        Examples
+        --------
+        ```python
+        client = Client()
+        client.run(&#34;ToKeN&#34;)
+        ```
         &#34;&#34;&#34;
         self.loop.run_until_complete(self.start(token))
 
@@ -286,14 +311,17 @@ client = Client()</p></div>
         &#34;&#34;&#34;
         This is send gateway event.
 
-        Examples:
-            client = Client()
+        Examples
+        --------
+        ```python
+        client = Client()
         
-            @client.event
-            async def on_ready():
-                print(&#34;ready&#34;)
+        @client.event
+        async def on_ready():
+            print(&#34;ready&#34;)
 
-            client.run(&#34;ToKeN&#34;)
+        client.run(&#34;ToKeN&#34;)
+        ```
         &#34;&#34;&#34;
         setattr(self, coro.__name__, coro)
         return coro
@@ -345,13 +373,16 @@ client = Client()</p></div>
         &#34;&#34;&#34;
         This can add discord application commannd.
 
-        Examples:
-            from discord_api import Client, Command
+        Examples
+        --------
+        ```python
+        from discord_api import Client, Command
 
-            client = Client()
-            client.add_command(Command(name = &#34;ping&#34;, description = &#34;pong&#34;))
+        client = Client()
+        client.add_command(Command(name = &#34;ping&#34;, description = &#34;pong&#34;))
         
-            client.run(&#34;ToKeN&#34;)
+        client.run(&#34;ToKeN&#34;)
+        ```
         &#34;&#34;&#34;
         self.commands.append(command)</code></pre>
 </details>
@@ -367,10 +398,13 @@ client = Client()</p></div>
 <dd>
 <div class="desc"><p>This can add discord application commannd.</p>
 <h2 id="examples">Examples</h2>
-<p>from discord_api import Client, Command</p>
-<p>client = Client()
-client.add_command(Command(name = "ping", description = "pong"))</p>
-<p>client.run("ToKeN")</p></div>
+<pre><code class="language-python">from discord_api import Client, Command
+
+client = Client()
+client.add_command(Command(name = &quot;ping&quot;, description = &quot;pong&quot;))
+
+client.run(&quot;ToKeN&quot;)
+</code></pre></div>
 <details class="source">
 <summary>
 <span>Expand source code</span>
@@ -379,13 +413,16 @@ client.add_command(Command(name = "ping", description = "pong"))</p>
     &#34;&#34;&#34;
     This can add discord application commannd.
 
-    Examples:
-        from discord_api import Client, Command
+    Examples
+    --------
+    ```python
+    from discord_api import Client, Command
 
-        client = Client()
-        client.add_command(Command(name = &#34;ping&#34;, description = &#34;pong&#34;))
+    client = Client()
+    client.add_command(Command(name = &#34;ping&#34;, description = &#34;pong&#34;))
     
-        client.run(&#34;ToKeN&#34;)
+    client.run(&#34;ToKeN&#34;)
+    ```
     &#34;&#34;&#34;
     self.commands.append(command)</code></pre>
 </details>
@@ -433,11 +470,14 @@ But if you want to use this, you need to use <code>await client.login()</code></
 <dd>
 <div class="desc"><p>This is send gateway event.</p>
 <h2 id="examples">Examples</h2>
-<p>client = Client()</p>
-<p>@client.event
+<pre><code class="language-python">client = Client()
+
+@client.event
 async def on_ready():
-print("ready")</p>
-<p>client.run("ToKeN")</p></div>
+    print(&quot;ready&quot;)
+
+client.run(&quot;ToKeN&quot;)
+</code></pre></div>
 <details class="source">
 <summary>
 <span>Expand source code</span>
@@ -446,14 +486,17 @@ print("ready")</p>
     &#34;&#34;&#34;
     This is send gateway event.
 
-    Examples:
-        client = Client()
+    Examples
+    --------
+    ```python
+    client = Client()
     
-        @client.event
-        async def on_ready():
-            print(&#34;ready&#34;)
+    @client.event
+    async def on_ready():
+        print(&#34;ready&#34;)
 
-        client.run(&#34;ToKeN&#34;)
+    client.run(&#34;ToKeN&#34;)
+    ```
     &#34;&#34;&#34;
     setattr(self, coro.__name__, coro)
     return coro</code></pre>
@@ -533,7 +576,8 @@ print("ready")</p>
 <dd>
 <div class="desc"><p>This is print a like sanic log</p>
 <h2 id="examples">Examples</h2>
-<p>client.print("test", "this is test")</p></div>
+<pre><code class="language-python">client.print(&quot;test&quot;, &quot;this is test&quot;)
+</code></pre></div>
 <details class="source">
 <summary>
 <span>Expand source code</span>
@@ -542,8 +586,11 @@ print("ready")</p>
     &#34;&#34;&#34;
     This is print a like sanic log
     
-    Examples:
-        client.print(&#34;test&#34;, &#34;this is test&#34;)
+    Examples
+    --------
+    ```python
+    client.print(&#34;test&#34;, &#34;this is test&#34;)
+    ```
     &#34;&#34;&#34;
     if self.log is True:
         print(f&#34;[{name}]:{content}&#34;)</code></pre>
@@ -555,8 +602,9 @@ print("ready")</p>
 <dd>
 <div class="desc"><p>This can run a discord client.</p>
 <h2 id="examples">Examples</h2>
-<p>client = Client()
-client.run("ToKeN")</p></div>
+<pre><code class="language-python">client = Client()
+client.run(&quot;ToKeN&quot;)
+</code></pre></div>
 <details class="source">
 <summary>
 <span>Expand source code</span>
@@ -565,9 +613,12 @@ client.run("ToKeN")</p></div>
     &#34;&#34;&#34;
     This can run a discord client.
 
-    Examples:
-        client = Client()
-        client.run(&#34;ToKeN&#34;)
+    Examples
+    --------
+    ```python
+    client = Client()
+    client.run(&#34;ToKeN&#34;)
+    ```
     &#34;&#34;&#34;
     self.loop.run_until_complete(self.start(token))</code></pre>
 </details>

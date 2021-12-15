@@ -33,11 +33,12 @@ from .errors import *
 from .role import Role
 from .member import Member
 from ujson import dumps
+from asyncio import sleep
 
 class Route:
-    def __init__(self, method, route):
+    def __init__(self, method, path):
         self.method = method
-        self.route = route
+        self.path = path
 
 class DiscordRequest:
     def __init__(self, client):
@@ -69,10 +70,18 @@ class DiscordRequest:
         if kwargs.get(&#34;json&#34;):
             headers[&#34;Content-Type&#34;] = &#34;application/json&#34;
         kwargs[&#34;headers&#34;] = headers
-        async with self.session.request(route.method, f&#34;{self.baseurl}{route.route}&#34;, *args, **kwargs) as r:
-            if r.status == 429:
-                raise ApiError(&#34;Now api is limit. Wait a minute please.&#34;)
-            return await self.json_or_text(r)
+        for t in range(5):
+            async with self.session.request(route.method, self.baseurl + route.path, *args, **kwargs) as r:
+                if r.status == 429:
+                    data = await r.json()
+                    if data[&#34;global&#34;] is True:
+                        raise ApiError(&#34;Now api is limit. Wait a minute please.&#34;)
+                    else:
+                        await sleep(data[&#34;retry_after&#34;])
+                elif r.status == 404:
+                    raise ApiError(&#34;Not Found Error&#34;)
+                elif 300 &gt; r.status &gt;= 200:
+                    return await self.json_or_text(r)
 
     async def static_login(self):
         data = await self.request(Route(&#34;GET&#34;, &#34;/users/@me&#34;))
@@ -147,10 +156,18 @@ class DiscordRequest:
         if kwargs.get(&#34;json&#34;):
             headers[&#34;Content-Type&#34;] = &#34;application/json&#34;
         kwargs[&#34;headers&#34;] = headers
-        async with self.session.request(route.method, f&#34;{self.baseurl}{route.route}&#34;, *args, **kwargs) as r:
-            if r.status == 429:
-                raise ApiError(&#34;Now api is limit. Wait a minute please.&#34;)
-            return await self.json_or_text(r)
+        for t in range(5):
+            async with self.session.request(route.method, self.baseurl + route.path, *args, **kwargs) as r:
+                if r.status == 429:
+                    data = await r.json()
+                    if data[&#34;global&#34;] is True:
+                        raise ApiError(&#34;Now api is limit. Wait a minute please.&#34;)
+                    else:
+                        await sleep(data[&#34;retry_after&#34;])
+                elif r.status == 404:
+                    raise ApiError(&#34;Not Found Error&#34;)
+                elif 300 &gt; r.status &gt;= 200:
+                    return await self.json_or_text(r)
 
     async def static_login(self):
         data = await self.request(Route(&#34;GET&#34;, &#34;/users/@me&#34;))
@@ -275,10 +292,18 @@ class DiscordRequest:
     if kwargs.get(&#34;json&#34;):
         headers[&#34;Content-Type&#34;] = &#34;application/json&#34;
     kwargs[&#34;headers&#34;] = headers
-    async with self.session.request(route.method, f&#34;{self.baseurl}{route.route}&#34;, *args, **kwargs) as r:
-        if r.status == 429:
-            raise ApiError(&#34;Now api is limit. Wait a minute please.&#34;)
-        return await self.json_or_text(r)</code></pre>
+    for t in range(5):
+        async with self.session.request(route.method, self.baseurl + route.path, *args, **kwargs) as r:
+            if r.status == 429:
+                data = await r.json()
+                if data[&#34;global&#34;] is True:
+                    raise ApiError(&#34;Now api is limit. Wait a minute please.&#34;)
+                else:
+                    await sleep(data[&#34;retry_after&#34;])
+            elif r.status == 404:
+                raise ApiError(&#34;Not Found Error&#34;)
+            elif 300 &gt; r.status &gt;= 200:
+                return await self.json_or_text(r)</code></pre>
 </details>
 </dd>
 <dt id="discord_api.http.DiscordRequest.send_message"><code class="name flex">
@@ -329,7 +354,7 @@ class DiscordRequest:
 </dd>
 <dt id="discord_api.http.Route"><code class="flex name class">
 <span>class <span class="ident">Route</span></span>
-<span>(</span><span>method, route)</span>
+<span>(</span><span>method, path)</span>
 </code></dt>
 <dd>
 <div class="desc"></div>
@@ -338,9 +363,9 @@ class DiscordRequest:
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">class Route:
-    def __init__(self, method, route):
+    def __init__(self, method, path):
         self.method = method
-        self.route = route</code></pre>
+        self.path = path</code></pre>
 </details>
 </dd>
 </dl>
