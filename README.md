@@ -1,5 +1,5 @@
 # discord-api.py
-![PyPI](https://img.shields.io/pypi/v/discord-api.py) ![download](https://img.shields.io/pypi/dm/discord-api.py)
+![PyPI](https://img.shields.io/pypi/v/discord-api.py) ![download](https://img.shields.io/pypi/dm/discord-api.py) ![Downloads](https://pepy.tech/badge/discord-api.py)
 
 ## introduction
 
