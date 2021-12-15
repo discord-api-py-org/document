@@ -100,7 +100,7 @@ class Client:
         &#34;&#34;&#34;
         self.user = ClientUser.from_dict(await self.http.static_login())
 
-    async def start(self, token):
+    async def start(self, token) -&gt; None:
         &#34;&#34;&#34;
         This can run a discord client.
         &#34;&#34;&#34;
@@ -110,7 +110,7 @@ class Client:
         await self.setup_command()
         await self.connect()
     
-    def run(self, token):
+    def run(self, token) -&gt; None:
         &#34;&#34;&#34;
         This can run a discord client.
 
@@ -143,6 +143,14 @@ class Client:
         return coro
 
     def get_guild(self, _id:int) -&gt; Optional[Guild]:
+        &#34;&#34;&#34;This can search guild from client.guilds
+        
+        Examples
+        --------
+        ```python
+        guild = client.get_guild(8819371883819)
+        ```
+        &#34;&#34;&#34;
         guild = None
         for guild in self.guilds:
             if _id == guild.id:
@@ -170,7 +178,7 @@ class Client:
         else:
             return False
 
-    async def setup_command(self):
+    async def setup_command(self) -&gt; None:
         &#34;&#34;&#34;
         set up a application command.
         &#34;&#34;&#34;
@@ -307,7 +315,7 @@ client = Client()
         &#34;&#34;&#34;
         self.user = ClientUser.from_dict(await self.http.static_login())
 
-    async def start(self, token):
+    async def start(self, token) -&gt; None:
         &#34;&#34;&#34;
         This can run a discord client.
         &#34;&#34;&#34;
@@ -317,7 +325,7 @@ client = Client()
         await self.setup_command()
         await self.connect()
     
-    def run(self, token):
+    def run(self, token) -&gt; None:
         &#34;&#34;&#34;
         This can run a discord client.
 
@@ -350,6 +358,14 @@ client = Client()
         return coro
 
     def get_guild(self, _id:int) -&gt; Optional[Guild]:
+        &#34;&#34;&#34;This can search guild from client.guilds
+        
+        Examples
+        --------
+        ```python
+        guild = client.get_guild(8819371883819)
+        ```
+        &#34;&#34;&#34;
         guild = None
         for guild in self.guilds:
             if _id == guild.id:
@@ -377,7 +393,7 @@ client = Client()
         else:
             return False
 
-    async def setup_command(self):
+    async def setup_command(self) -&gt; None:
         &#34;&#34;&#34;
         set up a application command.
         &#34;&#34;&#34;
@@ -564,12 +580,23 @@ client.run(&quot;ToKeN&quot;)
 <span>def <span class="ident">get_guild</span></span>(<span>self, _id: int) ‑> Optional[<a title="discord_api.guild.Guild" href="guild.html#discord_api.guild.Guild">Guild</a>]</span>
 </code></dt>
 <dd>
-<div class="desc"></div>
+<div class="desc"><p>This can search guild from client.guilds</p>
+<h2 id="examples">Examples</h2>
+<pre><code class="language-python">guild = client.get_guild(8819371883819)
+</code></pre></div>
 <details class="source">
 <summary>
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">def get_guild(self, _id:int) -&gt; Optional[Guild]:
+    &#34;&#34;&#34;This can search guild from client.guilds
+    
+    Examples
+    --------
+    ```python
+    guild = client.get_guild(8819371883819)
+    ```
+    &#34;&#34;&#34;
     guild = None
     for guild in self.guilds:
         if _id == guild.id:
@@ -620,7 +647,7 @@ client.run(&quot;ToKeN&quot;)
 </details>
 </dd>
 <dt id="discord_api.client.Client.run"><code class="name flex">
-<span>def <span class="ident">run</span></span>(<span>self, token)</span>
+<span>def <span class="ident">run</span></span>(<span>self, token) ‑> None</span>
 </code></dt>
 <dd>
 <div class="desc"><p>This can run a discord client.</p>
@@ -632,7 +659,7 @@ client.run(&quot;ToKeN&quot;)
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def run(self, token):
+<pre><code class="python">def run(self, token) -&gt; None:
     &#34;&#34;&#34;
     This can run a discord client.
 
@@ -647,7 +674,7 @@ client.run(&quot;ToKeN&quot;)
 </details>
 </dd>
 <dt id="discord_api.client.Client.setup_command"><code class="name flex">
-<span>async def <span class="ident">setup_command</span></span>(<span>self)</span>
+<span>async def <span class="ident">setup_command</span></span>(<span>self) ‑> None</span>
 </code></dt>
 <dd>
 <div class="desc"><p>set up a application command.</p></div>
@@ -655,7 +682,7 @@ client.run(&quot;ToKeN&quot;)
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">async def setup_command(self):
+<pre><code class="python">async def setup_command(self) -&gt; None:
     &#34;&#34;&#34;
     set up a application command.
     &#34;&#34;&#34;
@@ -672,7 +699,7 @@ client.run(&quot;ToKeN&quot;)
 </details>
 </dd>
 <dt id="discord_api.client.Client.start"><code class="name flex">
-<span>async def <span class="ident">start</span></span>(<span>self, token)</span>
+<span>async def <span class="ident">start</span></span>(<span>self, token) ‑> None</span>
 </code></dt>
 <dd>
 <div class="desc"><p>This can run a discord client.</p></div>
@@ -680,7 +707,7 @@ client.run(&quot;ToKeN&quot;)
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">async def start(self, token):
+<pre><code class="python">async def start(self, token) -&gt; None:
     &#34;&#34;&#34;
     This can run a discord client.
     &#34;&#34;&#34;
