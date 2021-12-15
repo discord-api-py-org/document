@@ -19,7 +19,7 @@ jobs:
         run: | #このような書き方で複数行を一気に実行することができる。
           python -m pip install --upgrade pip
           pip install pdoc3
-          pip install discord-api.py
+          pip install git+https://github.com/tuna2134/discord-api.py
 
       - name: Run bash
         run: |
