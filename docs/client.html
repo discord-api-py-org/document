@@ -50,6 +50,7 @@ class Client:
         ```python
         from discord_api import Client
         client = Client()
+        ```
         &#34;&#34;&#34;
         self.loop = asyncio.get_event_loop() if loop is None else loop
         self.http = DiscordRequest(self)
@@ -218,9 +219,9 @@ class Client:
 <dd>If you don't want show a log, please do False</dd>
 </dl>
 <h2 id="examples">Examples</h2>
-<p>```python
-from discord_api import Client
-client = Client()</p></div>
+<pre><code class="language-python">from discord_api import Client
+client = Client()
+</code></pre></div>
 <details class="source">
 <summary>
 <span>Expand source code</span>
@@ -242,6 +243,7 @@ client = Client()</p></div>
         ```python
         from discord_api import Client
         client = Client()
+        ```
         &#34;&#34;&#34;
         self.loop = asyncio.get_event_loop() if loop is None else loop
         self.http = DiscordRequest(self)
