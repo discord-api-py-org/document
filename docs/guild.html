@@ -28,8 +28,24 @@
 </summary>
 <pre><code class="python">from .channels import TextChannel
 from .role import Role
+from typing import Optional
 
 class Guild:
+    &#34;&#34;&#34;This is for easy to get a guild data.
+    
+    Attributes
+    ----------
+    name : str
+        return a guild name.
+    id : str
+        return a guild id.
+    description : str
+        return a guild description.
+    roles : List[Role]
+        return a guild roles.
+    text_channels : List[TextChannel]
+        return a guild text channels
+    &#34;&#34;&#34;
     def __init__(self, client, data):
         self.name = data[&#34;name&#34;]
         self.id = data[&#34;id&#34;]
@@ -37,7 +53,18 @@ class Guild:
         self.roles = [Role.from_dict(role) for role in data[&#34;roles&#34;]]
         self.text_channels = [TextChannel.from_dict(client, i) for i in data[&#34;channels&#34;] if i[&#34;type&#34;] == 0]
 
-    def get_role(self, id:int):
+    def get_role(self, id:int) -&gt; Optional[Role]:
+        &#34;&#34;&#34;This can search role from guild.roles
+        
+        Parameters
+        ----------
+        id : int
+            role id
+            
+        Returns
+        -------
+        Optional[Role] : Role or None
+        &#34;&#34;&#34;
         role = None
         for role in self.roles:
             if role.id == id:
@@ -64,12 +91,40 @@ class Guild:
 <span>(</span><span>client, data)</span>
 </code></dt>
 <dd>
-<div class="desc"></div>
+<div class="desc"><p>This is for easy to get a guild data.</p>
+<h2 id="attributes">Attributes</h2>
+<dl>
+<dt><strong><code>name</code></strong> :&ensp;<code>str</code></dt>
+<dd>return a guild name.</dd>
+<dt><strong><code>id</code></strong> :&ensp;<code>str</code></dt>
+<dd>return a guild id.</dd>
+<dt><strong><code>description</code></strong> :&ensp;<code>str</code></dt>
+<dd>return a guild description.</dd>
+<dt><strong><code>roles</code></strong> :&ensp;<code>List[Role]</code></dt>
+<dd>return a guild roles.</dd>
+<dt><strong><code>text_channels</code></strong> :&ensp;<code>List[TextChannel]</code></dt>
+<dd>return a guild text channels</dd>
+</dl></div>
 <details class="source">
 <summary>
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">class Guild:
+    &#34;&#34;&#34;This is for easy to get a guild data.
+    
+    Attributes
+    ----------
+    name : str
+        return a guild name.
+    id : str
+        return a guild id.
+    description : str
+        return a guild description.
+    roles : List[Role]
+        return a guild roles.
+    text_channels : List[TextChannel]
+        return a guild text channels
+    &#34;&#34;&#34;
     def __init__(self, client, data):
         self.name = data[&#34;name&#34;]
         self.id = data[&#34;id&#34;]
@@ -77,7 +132,18 @@ class Guild:
         self.roles = [Role.from_dict(role) for role in data[&#34;roles&#34;]]
         self.text_channels = [TextChannel.from_dict(client, i) for i in data[&#34;channels&#34;] if i[&#34;type&#34;] == 0]
 
-    def get_role(self, id:int):
+    def get_role(self, id:int) -&gt; Optional[Role]:
+        &#34;&#34;&#34;This can search role from guild.roles
+        
+        Parameters
+        ----------
+        id : int
+            role id
+            
+        Returns
+        -------
+        Optional[Role] : Role or None
+        &#34;&#34;&#34;
         role = None
         for role in self.roles:
             if role.id == id:
@@ -110,15 +176,36 @@ def from_dict(cls, client, data):
 <h3>Methods</h3>
 <dl>
 <dt id="discord_api.guild.Guild.get_role"><code class="name flex">
-<span>def <span class="ident">get_role</span></span>(<span>self, id: int)</span>
+<span>def <span class="ident">get_role</span></span>(<span>self, id: int) ‑> Optional[<a title="discord_api.role.Role" href="role.html#discord_api.role.Role">Role</a>]</span>
 </code></dt>
 <dd>
-<div class="desc"></div>
+<div class="desc"><p>This can search role from guild.roles</p>
+<h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>id</code></strong> :&ensp;<code>int</code></dt>
+<dd>role id</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>Optional[Role] : Role</code> or <code>None</code></dt>
+<dd>&nbsp;</dd>
+</dl></div>
 <details class="source">
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def get_role(self, id:int):
+<pre><code class="python">def get_role(self, id:int) -&gt; Optional[Role]:
+    &#34;&#34;&#34;This can search role from guild.roles
+    
+    Parameters
+    ----------
+    id : int
+        role id
+        
+    Returns
+    -------
+    Optional[Role] : Role or None
+    &#34;&#34;&#34;
     role = None
     for role in self.roles:
         if role.id == id:

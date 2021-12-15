@@ -30,6 +30,7 @@
 import asyncio
 from .command import Command
 from .clientuser import ClientUser
+from .channels import TextChannel
 from typing import Optional, List
 from .guild import Guild
 
@@ -145,6 +146,10 @@ class Client:
     def get_guild(self, _id:int) -&gt; Optional[Guild]:
         &#34;&#34;&#34;This can search guild from client.guilds
         
+        Returns
+        -------
+        Optional[Guild] : guild or None
+        
         Examples
         --------
         ```python
@@ -160,11 +165,24 @@ class Client:
     async def fetch_commands(self) -&gt; List[Command]:
         &#34;&#34;&#34;
         This can fetch discord application commands from discord api.
+        
+        Returns
+        -------
+        List[Command] : list of command.
         &#34;&#34;&#34;
         datas = await self.http.fetch_commands()
         return [Command.from_dict(data) for data in datas]
 
-    def get_channel(self, _id:int):
+    def get_channel(self, _id:int) -&gt; Optional[TextChannel]:
+        &#34;&#34;&#34;This can search text_channel from guild.text_channels.
+        
+        Examples
+        --------
+        ```python
+        channel = client.get_channel(0189193918939)
+        print(channel.name)
+        ```
+        &#34;&#34;&#34;
         channel = None
         for guild in self.guilds:
             for channel in guild.text_channels:
@@ -360,6 +378,10 @@ client = Client()
     def get_guild(self, _id:int) -&gt; Optional[Guild]:
         &#34;&#34;&#34;This can search guild from client.guilds
         
+        Returns
+        -------
+        Optional[Guild] : guild or None
+        
         Examples
         --------
         ```python
@@ -375,11 +397,24 @@ client = Client()
     async def fetch_commands(self) -&gt; List[Command]:
         &#34;&#34;&#34;
         This can fetch discord application commands from discord api.
+        
+        Returns
+        -------
+        List[Command] : list of command.
         &#34;&#34;&#34;
         datas = await self.http.fetch_commands()
         return [Command.from_dict(data) for data in datas]
 
-    def get_channel(self, _id:int):
+    def get_channel(self, _id:int) -&gt; Optional[TextChannel]:
+        &#34;&#34;&#34;This can search text_channel from guild.text_channels.
+        
+        Examples
+        --------
+        ```python
+        channel = client.get_channel(0189193918939)
+        print(channel.name)
+        ```
+        &#34;&#34;&#34;
         channel = None
         for guild in self.guilds:
             for channel in guild.text_channels:
@@ -545,7 +580,9 @@ client.run(&quot;ToKeN&quot;)
 <span>async def <span class="ident">fetch_commands</span></span>(<span>self) ‑> List[<a title="discord_api.command.Command" href="command.html#discord_api.command.Command">Command</a>]</span>
 </code></dt>
 <dd>
-<div class="desc"><p>This can fetch discord application commands from discord api.</p></div>
+<div class="desc"><p>This can fetch discord application commands from discord api.</p>
+<h2 id="returns">Returns</h2>
+<p>List[Command] : list of command.</p></div>
 <details class="source">
 <summary>
 <span>Expand source code</span>
@@ -553,21 +590,38 @@ client.run(&quot;ToKeN&quot;)
 <pre><code class="python">async def fetch_commands(self) -&gt; List[Command]:
     &#34;&#34;&#34;
     This can fetch discord application commands from discord api.
+    
+    Returns
+    -------
+    List[Command] : list of command.
     &#34;&#34;&#34;
     datas = await self.http.fetch_commands()
     return [Command.from_dict(data) for data in datas]</code></pre>
 </details>
 </dd>
 <dt id="discord_api.client.Client.get_channel"><code class="name flex">
-<span>def <span class="ident">get_channel</span></span>(<span>self, _id: int)</span>
+<span>def <span class="ident">get_channel</span></span>(<span>self, _id: int) ‑> Optional[<a title="discord_api.channels.TextChannel" href="channels.html#discord_api.channels.TextChannel">TextChannel</a>]</span>
 </code></dt>
 <dd>
-<div class="desc"></div>
+<div class="desc"><p>This can search text_channel from guild.text_channels.</p>
+<h2 id="examples">Examples</h2>
+<pre><code class="language-python">channel = client.get_channel(0189193918939)
+print(channel.name)
+</code></pre></div>
 <details class="source">
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def get_channel(self, _id:int):
+<pre><code class="python">def get_channel(self, _id:int) -&gt; Optional[TextChannel]:
+    &#34;&#34;&#34;This can search text_channel from guild.text_channels.
+    
+    Examples
+    --------
+    ```python
+    channel = client.get_channel(0189193918939)
+    print(channel.name)
+    ```
+    &#34;&#34;&#34;
     channel = None
     for guild in self.guilds:
         for channel in guild.text_channels:
@@ -581,6 +635,11 @@ client.run(&quot;ToKeN&quot;)
 </code></dt>
 <dd>
 <div class="desc"><p>This can search guild from client.guilds</p>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>Optional[Guild] : guild</code> or <code>None</code></dt>
+<dd>&nbsp;</dd>
+</dl>
 <h2 id="examples">Examples</h2>
 <pre><code class="language-python">guild = client.get_guild(8819371883819)
 </code></pre></div>
@@ -590,6 +649,10 @@ client.run(&quot;ToKeN&quot;)
 </summary>
 <pre><code class="python">def get_guild(self, _id:int) -&gt; Optional[Guild]:
     &#34;&#34;&#34;This can search guild from client.guilds
+    
+    Returns
+    -------
+    Optional[Guild] : guild or None
     
     Examples
     --------
