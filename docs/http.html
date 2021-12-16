@@ -74,7 +74,7 @@ class DiscordRequest:
             async with self.session.request(route.method, self.baseurl + route.path, *args, **kwargs) as r:
                 if r.status == 429:
                     data = await r.json()
-                    if data[&#34;global&#34;] is True:
+                    if data.get(&#34;global&#34;, False) is True:
                         raise ApiError(&#34;Now api is limit. Wait a minute please.&#34;)
                     else:
                         await sleep(data[&#34;retry_after&#34;])
@@ -160,7 +160,7 @@ class DiscordRequest:
             async with self.session.request(route.method, self.baseurl + route.path, *args, **kwargs) as r:
                 if r.status == 429:
                     data = await r.json()
-                    if data[&#34;global&#34;] is True:
+                    if data.get(&#34;global&#34;, False) is True:
                         raise ApiError(&#34;Now api is limit. Wait a minute please.&#34;)
                     else:
                         await sleep(data[&#34;retry_after&#34;])
@@ -296,7 +296,7 @@ class DiscordRequest:
         async with self.session.request(route.method, self.baseurl + route.path, *args, **kwargs) as r:
             if r.status == 429:
                 data = await r.json()
-                if data[&#34;global&#34;] is True:
+                if data.get(&#34;global&#34;, False) is True:
                     raise ApiError(&#34;Now api is limit. Wait a minute please.&#34;)
                 else:
                     await sleep(data[&#34;retry_after&#34;])
